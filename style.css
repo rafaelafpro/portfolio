@@ -1,0 +1,225 @@
+:root {
+  --primary: #64ffda;
+  --bg: #0c0c0c;
+  --text: #e6e6e6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: monospace;
+  background-color: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.container {
+  text-align: center;
+}
+
+.content {
+  transform-style: preserve-3d;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease-out forwards;
+  will-change: transform;
+}
+
+.dopamine {
+  width: 180px;
+  height: 80px;
+  margin: 0 auto 2rem;
+}
+
+.dopamine path {
+  stroke: var(--primary);
+  stroke-width: 1;
+  stroke: url(#moleculeGradient);
+  fill: none;
+  /* stroke-dasharray: 1000;*/
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 2px rgba(100, 255, 218, 0.3));
+}
+
+.dopamine path {
+  stroke: url(#moleculeGradient);
+  stroke-width: 1;
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 2px rgba(100, 255, 218, 0.3));
+}
+
+.dopamine path {
+  animation: drawMolecule 12s ease-in-out infinite;
+}
+
+.dopamine path:nth-child(1) {
+  animation-delay: 0.4s;
+  animation: drawMolecule 12s ease-in-out infinite;
+}
+
+.dopamine path:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.dopamine path:nth-child(3) {
+  animation-delay: 1.6s;
+}
+
+.dopamine path:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+@keyframes drawMolecule {
+  0% {
+    stroke-dashoffset: 1000;
+    stroke-dasharray: 800;
+    opacity: 0;
+  }
+  20% {
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+  80% {
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+  100% {
+    stroke-dashoffset: -1000;
+    stroke-dasharray: -200;
+    opacity: 0;
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, var(--primary), #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #888;
+  margin-bottom: 2.5rem;
+  font-family: monospace;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards 0.2s;
+}
+
+.construction-line {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards 0.4s;
+}
+
+.bracket {
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+.text {
+  margin: 0 0.5rem;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards 0.6s;
+}
+
+.progress {
+  position: absolute;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  animation: progress 1.5s ease-in-out infinite;
+}
+
+.social-links {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards 0.8s;
+}
+
+.social-links a {
+  color: var(--text);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.7;
+  will-change: transform;
+}
+
+.social-links a:hover {
+  color: var(--primary);
+  opacity: 1;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progress {
+  from {
+    left: -50%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .construction-line {
+    font-size: 1rem;
+  }
+
+  .social-links {
+    gap: 1rem;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
